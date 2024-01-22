@@ -10,7 +10,9 @@ interface Task {
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const deleteTask = (taskId: number) => {};
+  const deleteTask = (taskId: number) => {
+    setTasks(tasks.filter((task) => task.id !== taskId));
+  };
 
   const list = [
     "Clean the kitchen",
