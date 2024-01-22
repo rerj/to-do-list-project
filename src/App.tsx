@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import TaskItem from "./components/TaskItem";
 
@@ -7,6 +8,10 @@ interface Task {
 }
 
 function App() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  const deleteTask = (taskId: number) => {};
+
   const list = [
     "Clean the kitchen",
     "Wash the dishes",
@@ -14,9 +19,14 @@ function App() {
     "Cook dinner",
   ];
 
+  const sampleTask: Task = {
+    id: 1,
+    text: "Sample Task",
+  };
+
   return (
     <>
-      <TaskItem />
+      <TaskItem task={sampleTask} deleteTask={deleteTask} />
     </>
   );
 }

@@ -15,10 +15,11 @@ const TaskItem = ({ task, deleteTask }: TaskItemProps) => {
         {task.text}
         <button
           type="button"
-          className="btn-close"
-          aria-label="Close"
+          className="btn btn-secondary btn-sm"
           onClick={() => deleteTask(task.id)}
-        />
+        >
+          Delete
+        </button>
       </li>
     </>
   );
