@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import TaskItem from "./components/TaskItem";
 import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
 
 interface Task {
   id: number;
@@ -20,14 +20,15 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  const sampleTask: Task = {
-    id: 1,
-    text: "Sample Task",
+  const addTask = (newTask: Task) => {
+    setTasks([...tasks, newTask]);
   };
 
   return (
     <>
       <TaskList tasks={tasks} deleteTask={deleteTask} />
+
+      <TaskForm addTask={addTask} />
     </>
   );
 }
