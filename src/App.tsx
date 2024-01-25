@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import TaskItem from "./components/TaskItem";
+import TaskList from "./components/TaskList";
 
 interface Task {
   id: number;
@@ -8,18 +9,16 @@ interface Task {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([
+    { id: 1, text: "Clean the kitchen" },
+    { id: 2, text: "Wash the dishes" },
+    { id: 3, text: "Buy groceries" },
+    { id: 4, text: "Cook dinner" },
+  ]);
 
   const deleteTask = (taskId: number) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
-
-  const list = [
-    "Clean the kitchen",
-    "Wash the dishes",
-    "Buy groceries",
-    "Cook dinner",
-  ];
 
   const sampleTask: Task = {
     id: 1,
@@ -28,7 +27,7 @@ function App() {
 
   return (
     <>
-      <TaskItem task={sampleTask} deleteTask={deleteTask} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} />
     </>
   );
 }
