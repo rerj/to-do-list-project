@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./CSS/FloatingDots.css";
 
 const FloatingDots = () => {
   const generateRandomDot = () => ({
@@ -17,7 +16,7 @@ const FloatingDots = () => {
   useEffect(() => {
     const updateDotsPosition = (event: MouseEvent) => {
       const updatedDots = dots.map((dot) => ({
-        left: dot.left + Math.sin(event.clientX / 300) * 20,
+        left: dot.left + Math.sin(event.clientX / 800) * 20,
         top: dot.top + Math.cos(event.clientY / 300) * 20,
       }));
       setDots(updatedDots);
