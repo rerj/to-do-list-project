@@ -5,6 +5,7 @@ body {
     padding-bottom: 2%;
     justify-content: center;
     font-family: sans-serif;
+    background-color: #a4a0cd;
 }
 
 
@@ -15,9 +16,10 @@ body {
 }
 
 .task-item {
+    background-color: white;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -45,6 +47,7 @@ body {
     border: 1px solid #2088ff;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease, border 0.3s ease;
 }
 
 .task-submit:hover {
@@ -59,6 +62,7 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .task-delete:hover {
