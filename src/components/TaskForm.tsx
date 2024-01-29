@@ -21,14 +21,15 @@ const TaskForm = ({ addTask }: TaskFormProps) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="task-form" onSubmit={handleSubmit}>
         <input
+          className="task-input"
           type="text"
           value={taskText}
           onChange={(event) => setTaskText(event.target.value)}
           placeholder="Add a new task"
         />{" "}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="task-submit">
           Submit
         </button>
       </form>

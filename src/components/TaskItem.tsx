@@ -11,11 +11,11 @@ interface TaskItemProps {
 const TaskItem = ({ task, deleteTask }: TaskItemProps) => {
   return (
     <>
-      <li>
+      <li className="task-item">
         {task.text}
         <button
           type="button"
-          className="btn btn-secondary btn-sm"
+          className="task-delete"
           onClick={() => deleteTask(task.id)}
         >
           Delete

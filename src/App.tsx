@@ -26,6 +26,8 @@ function App() {
 
   return (
     <>
+      <h1 className="list-heading">Rares's to-do list</h1>
+
       <TaskList tasks={tasks} deleteTask={deleteTask} />
 
       <TaskForm addTask={addTask} />
