@@ -68,3 +68,11 @@ body {
 .task-delete:hover {
     background-color: #7c3a3a;
 }
+
+.list-heading {
+    text-align: center;
+    text-shadow: 3px 3px #a77abf;
+    font-family: Roboto;
+    padding-bottom: 10px;
+    color: #202020;
+}
