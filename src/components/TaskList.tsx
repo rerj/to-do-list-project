@@ -12,7 +12,7 @@ interface TaskListProps {
 
 const TaskList = ({ tasks, deleteTask }: TaskListProps) => {
   return (
-    <ul>
+    <ul className="task-list">
       {tasks.map((task) => (
         <TaskItem key={task.id} task={task} deleteTask={deleteTask} />
       ))}
