@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
+import FloatingDots from "./components/FloatingDots";
 
 interface Task {
   id: number;
@@ -31,6 +32,8 @@ function App() {
       <TaskList tasks={tasks} deleteTask={deleteTask} />
 
       <TaskForm addTask={addTask} />
+
+      <FloatingDots />
     </>
   );
 }
