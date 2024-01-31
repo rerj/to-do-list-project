@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface Task {
   id: number;
   text: string;
@@ -9,19 +11,28 @@ interface TaskItemProps {
 }
 
 const TaskItem = ({ task, deleteTask }: TaskItemProps) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+  };
+
   return (
-    <>
-      <li className="task-item">
-        {task.text}
-        <button
-          type="button"
-          className="task-delete"
-          onClick={() => deleteTask(task.id)}
-        >
-          Delete
-        </button>
-      </li>
-    </>
+    <div className={`task-item ${checked ? "completed" : ""}`}>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={handleCheckboxChange}
+      />
+      <li className="task-text">{task.text}</li>
+      <button
+        type="button"
+        className="task-delete"
+        onClick={() => deleteTask(task.id)}
+      >
+        Delete
+      </button>
+    </div>
   );
 };
 

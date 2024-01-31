@@ -22,8 +22,21 @@ body {
     border: 2px solid #ddd;
     border-radius: 10px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+}
+
+.task-text{
+    margin-right: auto;
+    margin-left: 10px;
+}
+
+input[type="checkbox"] {
+    margin: 8px;
+    transform: scale(1.4);
 }
 
 .task-form {
