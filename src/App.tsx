@@ -3,6 +3,7 @@ import "./App.css";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import FloatingDots from "./components/FloatingDots";
+import DeleteAllCheckedButton from "./components/DeleteAllCheckedButton";
 
 interface Task {
   id: number;
@@ -34,6 +35,10 @@ function App() {
     );
   };
 
+  const deleteAllFinishedTasks = () => {
+    setTasks((prevTasks) => prevTasks.filter((task) => !task.checked));
+  };
+
   return (
     <>
       <h1 className="list-heading">Rares's to-do list</h1>
@@ -41,6 +46,8 @@ function App() {
       <TaskList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask} />
 
       <TaskForm addTask={addTask} />
+
+      <DeleteAllCheckedButton deleteAllFinishedTasks={deleteAllFinishedTasks} />
 
       <FloatingDots />
     </>
