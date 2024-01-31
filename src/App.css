@@ -32,6 +32,7 @@ body {
 .task-text{
     margin-right: auto;
     margin-left: 10px;
+    font-size: 115%;
 }
 
 input[type="checkbox"] {
