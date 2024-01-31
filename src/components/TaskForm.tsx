@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface TaskFormProps {
-  addTask: (newTask: { id: number; text: string }) => void;
+  addTask: (newTask: { id: number; text: string; checked: boolean }) => void;
 }
 
 const TaskForm = ({ addTask }: TaskFormProps) => {
@@ -13,6 +13,7 @@ const TaskForm = ({ addTask }: TaskFormProps) => {
       const newTask = {
         id: Date.now(),
         text: taskText,
+        checked: false,
       };
       addTask(newTask);
       setTaskText("");
