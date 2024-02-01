@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Task {
   id: number;
@@ -45,6 +45,24 @@ const TaskItem = ({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEditedText(event.target.value);
   };
+
+  useEffect(() => {
+    if (isEditing) {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Enter") {
+          handleSaveClick();
+        } else if (event.key === "Escape") {
+          handleCancelClick();
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [isEditing, handleSaveClick, handleCancelClick]);
 
   return (
     <div className={`task-item ${checked ? "completed" : ""}`}>
