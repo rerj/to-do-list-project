@@ -27,9 +27,14 @@ body {
 
 .task-item.completed .task-text {
     text-decoration: line-through;
+    text-decoration-color: #707070;
+    color: #707070;
+    transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
 }
 
 .task-text{
+    text-decoration: line-through;
+    text-decoration-color: transparent;
     margin-right: auto;
     margin-left: 10px;
     font-size: 115%;
