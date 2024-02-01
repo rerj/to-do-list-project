@@ -105,7 +105,7 @@ input[type="checkbox"] {
 }
 
 .task-delete:hover {
-    background-color: #7c3a3a;
+    background-color: #af1515;
 }
 
 
@@ -155,4 +155,57 @@ input[type="checkbox"] {
 
 .dot:hover {
     transform: scale(1.5);
+}
+
+.text-edit {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #cae4ff;
+    border-radius: 10px;
+}
+
+.task-edit {
+    padding: 10px;
+    margin-right: 6px;
+    background-color: #707070;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-edit:hover {
+    background-color: #630089;
+}
+
+.task-save {
+    padding: 8px;
+    margin-right: 6px;
+    background-color: #707070;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-save:hover {
+    background-color: #22af15;
+}
+
+.task-cancel {
+    padding: 8px;
+    margin-right: 6px;
+    background-color: #707070;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-cancel:hover {
+    background-color: #af1515;
 }

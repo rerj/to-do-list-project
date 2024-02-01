@@ -41,11 +41,24 @@ function App() {
     setTasks((prevTasks) => prevTasks.filter((task) => !task.checked));
   };
 
+  const editTask = (taskId: number, newText: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, text: newText } : task
+      )
+    );
+  };
+
   return (
     <>
       <h1 className="list-heading">Rares's to-do list</h1>
 
-      <TaskList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask} />
+      <TaskList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        toggleTask={toggleTask}
+        editTask={editTask}
+      />
 
       <TaskForm addTask={addTask} />
 

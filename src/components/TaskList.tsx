@@ -10,9 +10,15 @@ interface TaskListProps {
   tasks: Task[];
   deleteTask: (id: number) => void;
   toggleTask: (id: number) => void;
+  editTask: (taskId: number, newText: string) => void;
 }
 
-const TaskList = ({ tasks, deleteTask, toggleTask }: TaskListProps) => {
+const TaskList = ({
+  tasks,
+  deleteTask,
+  toggleTask,
+  editTask,
+}: TaskListProps) => {
   const SortedTasks = [...tasks].sort((a, b) =>
     a.checked === b.checked ? 0 : a.checked ? 1 : -1
   );
@@ -34,6 +40,7 @@ const TaskList = ({ tasks, deleteTask, toggleTask }: TaskListProps) => {
           task={task}
           deleteTask={deleteTask}
           toggleTask={toggleTask}
+          editTask={editTask}
         />
       ))}
     </ul>
