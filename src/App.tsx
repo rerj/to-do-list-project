@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
@@ -12,12 +12,14 @@ interface Task {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, text: "Clean the kitchen", checked: false },
-    { id: 2, text: "Wash the dishes", checked: false },
-    { id: 3, text: "Buy groceries", checked: false },
-    { id: 4, text: "Cook dinner", checked: false },
-  ]);
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const deleteTask = (taskId: number) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
