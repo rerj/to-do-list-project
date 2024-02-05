@@ -4,6 +4,8 @@ import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import FloatingDots from "./components/FloatingDots";
 import DeleteAllCheckedButton from "./components/DeleteAllCheckedButton";
+import NameForm from "./components/NameForm";
+import ChangeNameButton from "./components/ChangeNameButton";
 
 interface Task {
   id: number;
@@ -20,6 +22,15 @@ function App() {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  const [name, setName] = useState(() => {
+    const storedName = localStorage.getItem("currentName");
+    return storedName ? JSON.parse(storedName) : "";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("currentName", JSON.stringify(name));
+  });
 
   const deleteTask = (taskId: number) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
@@ -49,24 +60,44 @@ function App() {
     );
   };
 
-  return (
-    <>
-      <h1 className="list-heading">Rares's to-do list</h1>
+  const addName = (newName: { text: string }) => {
+    setName(newName.text);
+  };
 
-      <TaskList
-        tasks={tasks}
-        deleteTask={deleteTask}
-        toggleTask={toggleTask}
-        editTask={editTask}
-      />
+  const resetName = () => {
+    setName("");
+  };
 
-      <TaskForm addTask={addTask} />
+  if (name === "") {
+    return (
+      <>
+        <NameForm addName={addName} />
+        <FloatingDots />
+      </>
+    );
+  } else
+    return (
+      <>
+        <h1 className="list-heading">{name}'s to-do list</h1>
 
-      <DeleteAllCheckedButton deleteAllFinishedTasks={deleteAllFinishedTasks} />
+        <TaskList
+          tasks={tasks}
+          deleteTask={deleteTask}
+          toggleTask={toggleTask}
+          editTask={editTask}
+        />
 
-      <FloatingDots />
-    </>
-  );
+        <TaskForm addTask={addTask} />
+
+        <DeleteAllCheckedButton
+          deleteAllFinishedTasks={deleteAllFinishedTasks}
+        />
+
+        <ChangeNameButton resetName={resetName} />
+
+        <FloatingDots />
+      </>
+    );
 }
 
 export default App;
