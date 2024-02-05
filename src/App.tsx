@@ -5,6 +5,7 @@ import TaskForm from "./components/TaskForm";
 import FloatingDots from "./components/FloatingDots";
 import DeleteAllCheckedButton from "./components/DeleteAllCheckedButton";
 import NameForm from "./components/NameForm";
+import ChangeNameButton from "./components/ChangeNameButton";
 
 interface Task {
   id: number;
@@ -63,6 +64,10 @@ function App() {
     setName(newName.text);
   };
 
+  const resetName = () => {
+    setName("");
+  };
+
   if (name === "") {
     return (
       <>
@@ -87,6 +92,8 @@ function App() {
         <DeleteAllCheckedButton
           deleteAllFinishedTasks={deleteAllFinishedTasks}
         />
+
+        <ChangeNameButton resetName={resetName} />
 
         <FloatingDots />
       </>

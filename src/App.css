@@ -88,6 +88,7 @@ input[type="checkbox"] {
 
 .delete-all-button {
     padding: 10px;
+    margin-right: 8px;
     background-color: #707070;
     color: white;
     border: 1px solid #707070;
@@ -215,4 +216,19 @@ input[type="checkbox"] {
 
 .task-cancel:hover {
     background-color: #af1515;
+}
+
+.change-name-button {
+    padding: 10px;
+    background-color: #707070;
+    color: white;
+    border: 1px solid #707070;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.change-name-button:hover {
+    background-color: #15af88;
+    border: 1px solid #15af88;
 }
