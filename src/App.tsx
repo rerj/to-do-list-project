@@ -18,11 +18,18 @@ function App() {
     return storedTasks ? JSON.parse(storedTasks) : [];
   });
 
-  const [name, setName] = useState("");
-
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  const [name, setName] = useState(() => {
+    const storedName = localStorage.getItem("currentName");
+    return storedName ? JSON.parse(storedName) : "";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("currentName", JSON.stringify(name));
+  });
 
   const deleteTask = (taskId: number) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
