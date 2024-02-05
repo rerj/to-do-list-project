@@ -62,6 +62,13 @@ input[type="checkbox"] {
     border-radius: 10px;
 }
 
+.name-input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #cae4ff;
+    border-radius: 10px;
+}
 
 .task-submit {
     padding: 10px;

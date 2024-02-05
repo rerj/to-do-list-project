@@ -4,6 +4,7 @@ import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import FloatingDots from "./components/FloatingDots";
 import DeleteAllCheckedButton from "./components/DeleteAllCheckedButton";
+import NameForm from "./components/NameForm";
 
 interface Task {
   id: number;
@@ -16,6 +17,8 @@ function App() {
     const storedTasks = localStorage.getItem("tasks");
     return storedTasks ? JSON.parse(storedTasks) : [];
   });
+
+  const [name, setName] = useState("");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -49,24 +52,38 @@ function App() {
     );
   };
 
-  return (
-    <>
-      <h1 className="list-heading">Rares's to-do list</h1>
+  const addName = (newName: { text: string }) => {
+    setName(newName.text);
+  };
 
-      <TaskList
-        tasks={tasks}
-        deleteTask={deleteTask}
-        toggleTask={toggleTask}
-        editTask={editTask}
-      />
+  if (name === "") {
+    return (
+      <>
+        <NameForm addName={addName} />
+        <FloatingDots />
+      </>
+    );
+  } else
+    return (
+      <>
+        <h1 className="list-heading">{name}'s to-do list</h1>
 
-      <TaskForm addTask={addTask} />
+        <TaskList
+          tasks={tasks}
+          deleteTask={deleteTask}
+          toggleTask={toggleTask}
+          editTask={editTask}
+        />
 
-      <DeleteAllCheckedButton deleteAllFinishedTasks={deleteAllFinishedTasks} />
+        <TaskForm addTask={addTask} />
 
-      <FloatingDots />
-    </>
-  );
+        <DeleteAllCheckedButton
+          deleteAllFinishedTasks={deleteAllFinishedTasks}
+        />
+
+        <FloatingDots />
+      </>
+    );
 }
 
 export default App;
